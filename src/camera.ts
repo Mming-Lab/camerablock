@@ -101,7 +101,7 @@ enum Easing {
 /**
  * Custom blocks
  */
-//% weight=900 color=#54bfff icon="\uf03d" block="カメラ"
+//% weight=1 color=#54bfff icon="\uf03d" block="カメラ"
 namespace Camera {
 
     const COMMND_BASE: string = `camera @s `;
