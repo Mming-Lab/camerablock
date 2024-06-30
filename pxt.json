@@ -8,7 +8,9 @@
     "files": [
         "main.blocks",
         "main.ts",
-        "README.md"
+        "README.md",
+        "src/camera.ts",
+        "src/Easing.jres"
     ],
     "testFiles": [
         "test.ts"
@@ -19,5 +21,6 @@
     },
     "supportedTargets": [
         "minecraft"
-    ]
+    ],
+    "preferredEditor": "tsprj"
 }

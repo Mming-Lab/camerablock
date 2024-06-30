@@ -1,1 +1,1 @@
-<xml xmlns="https://developers.google.com/blockly/xml"><block type="pxt-on-start" id="5yP.LlmW/,lV[U|vS?cb" x="20" y="20"></block><block type="minecraftOnChat" id="3VA.s?nj$yEjzw3jJXf4" x="225" y="20"><mutation xmlns="http://www.w3.org/1999/xhtml" numargs="0"></mutation><value name="command"><shadow type="text" id=")o`(|]]j31[DHyKH2@95"><field name="TEXT">run</field></shadow></value></block></xml>
+<xml xmlns="https://developers.google.com/blockly/xml"><block type="pxt-on-start" id="eC[936s{`P.k1*M%J5~i" x="0" y="0"></block></xml>
