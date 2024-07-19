@@ -107,7 +107,7 @@ namespace Camera {
     const COMMND_BASE: string = `camera @s `;
     const FREE: string = `${COMMND_BASE} set minecraft:free`;
 
-    //% block="カメラ位置:%pos=minecraftCreatePosition"
+    //% block="カメラ位置:%pos=minecraftCreateWorldPosition"
     //% weight=990
     export function Pos(pos: Position): void {
         const posCmd: string = `pos ${pos} `;//移動先座標
@@ -128,7 +128,7 @@ namespace Camera {
     }
 
 
-    //% block="被写座標:%facing=minecraftCreatePosition"
+    //% block="被写座標:%facing=minecraftCreateWorldPosition"
     //% weight=970
     export function FacingPosition(facing: Position): void {
         const facingCmd: string = `facing ${facing}`;//目標座標:
@@ -150,7 +150,7 @@ namespace Camera {
         player.execute(cmd);//実行
     }
 
-    //% block="%time秒後にカメラワーク取消"
+    //% block="%time秒後にカメラ終了"
     //% time.defl=0
     //% weight=950
     export function CameraClear(time: number): void {
@@ -160,14 +160,16 @@ namespace Camera {
 
 
     //% group="ワーク"
-    //% block="被写座標ワーク| 被写座標:%facing=minecraftCreatePosition| 移動先:%pos=minecraftCreatePosition| イージング種類:%easeType| イージング秒:%easeTime| ワーク取消:%clear"
+    //% block="座標ワーク| 被写座標:%facing=minecraftCreateWorldPosition| カメラ位置:%pos=minecraftCreateWorldPosition| イージング種類:%easeType| イージング秒:%easeTime| ワーク中停止:%isPause| カメラ終了:%isClear"
     //% easeTime.defl=3
     //% easeType.fieldEditor="gridpicker"
     //% easeType.fieldOptions.width=120
-    //% clear.defl=true
-    //% clear.shadow=toggleOnOff
+    //% isPause.defl=true
+    //% isPause.shadow=toggleOnOff
+    //% isClear.defl=true
+    //% isClear.shadow=toggleOnOff
     //% weight=890
-    export function EasePosition(facing: Position, pos: Position, easeType: Easing, easeTime: number, clear: boolean): void {
+    export function EasePosition(facing: Position, pos: Position, easeType: Easing, easeTime: number, isPause?: boolean, isClear?: boolean): void {
         const easeCmd: string = `ease ${easeTime} ${_getEasingId(easeType)} `;//イージング
         const posCmd: string = `pos ${pos} `;//移動先座標
         const facingCmd: string = `facing ${facing}`;//目標座標:
@@ -175,21 +177,25 @@ namespace Camera {
         const cmd: string = `${FREE} ${easeCmd} ${posCmd} ${facingCmd}`;//コマンド
         //player.say(cmd);
         player.execute(cmd);//実行
-        loops.pause(easeTime * 1000)//待機
-        if (clear) {
+        if (isPause) {
+            loops.pause(easeTime * 1000)//待機
+        }
+        if (isClear) {
             CameraClear(0); //カメラワーク取消
         }
     }
 
     //% group="ワーク"
-    //% block="被写体ワーク| 被写体:%facing| 移動先:%pos=minecraftCreatePosition| イージング種類:%easeType| イージング秒:%easeTime| ワーク取消:%clear"
+    //% block="被写体ワーク| 被写体:%facing| カメラ位置:%pos=minecraftCreateWorldPosition| イージング種類:%easeType| イージング秒:%easeTime| ワーク中停止:%isPause| カメラ終了:%isClear"
     //% easeTime.defl=3
     //% easeType.fieldEditor="gridpicker"
     //% easeType.fieldOptions.width=120
-    //% clear.defl=true
-    //% clear.shadow=toggleOnOff
+    //% isPause.defl=true
+    //% isPause.shadow=toggleOnOff
+    //% isClear.defl=true
+    //% isClear.shadow=toggleOnOff
     //% weight=880
-    export function EaseEntity(facing: TargetSelectorKind, pos: Position, easeType: Easing, easeTime: number, clear: boolean): void {
+    export function EaseEntity(facing: TargetSelectorKind, pos: Position, easeType: Easing, easeTime: number, isPause?: boolean, isClear?: boolean): void {
         const easeCmd: string = `ease ${easeTime} ${_getEasingId(easeType)} `;//イージング
         const posCmd: string = `pos ${pos} `;//移動先座標
         const facingCmd: string = `facing ${mobs.target(facing)}`;//被写体:
@@ -197,23 +203,27 @@ namespace Camera {
         const cmd: string = `${FREE} ${easeCmd} ${posCmd} ${facingCmd}`;//コマンド
         //player.say(cmd);
         player.execute(cmd);//実行
-        loops.pause(easeTime * 1000)//待機
-        if (clear) {
+        if (isPause) {
+            loops.pause(easeTime * 1000)//待機
+        }
+        if (isClear) {
             CameraClear(0); //カメラワーク取消
         }
     }
 
     //% group="ワーク"
-    //% block="回転ワーク| ピッチ:%xRotヨー:%yRot| 移動先:%pos=minecraftCreatePosition| イージング種類:%easeType| イージング秒:%easeTime| ワーク取消:%clear"
+    //% block="回転ワーク| ピッチ:%xRotヨー:%yRot| カメラ位置:%pos=minecraftCreateWorldPosition| イージング種類:%easeType| イージング秒:%easeTime| ワーク中停止:%isPause| カメラ終了:%isClear"
     //% xRot.min=-90 xRot.max=90
     //% yRot.min=-180 yRot.max=180
     //% easeTime.defl=3
     //% easeType.fieldEditor="gridpicker"
     //% easeType.fieldOptions.width=120
-    //% clear.defl=true
-    //% clear.shadow=toggleOnOff
+    //% isPause.defl=true
+    //% isPause.shadow=toggleOnOff
+    //% isClear.defl=true
+    //% isClear.shadow=toggleOnOff
     //% weight=870
-    export function EaseRot(xRot: number, yRot: number, pos: Position, easeType: Easing, easeTime: number, clear: boolean): void {
+    export function EaseRot(xRot: number, yRot: number, pos: Position, easeType: Easing, easeTime: number, isPause?: boolean, isClear?: boolean): void {
         const easeCmd: string = `ease ${easeTime} ${_getEasingId(easeType)} `;//イージング
         const posCmd: string = `pos ${pos} `;//移動先座標
         const rotCmd: string = `rot ${xRot} ${yRot}`;//回転:
@@ -221,14 +231,16 @@ namespace Camera {
         const cmd: string = `${FREE} ${easeCmd} ${posCmd} ${rotCmd}`;//コマンド
         //player.say(cmd);
         player.execute(cmd);//実行
-        loops.pause(easeTime * 1000)//待機
-        if (clear) {
+        if (isPause) {
+            loops.pause(easeTime * 1000)//待機
+        }
+        if (isClear) {
             CameraClear(0); //カメラワーク取消
         }
     }
 
     //% group="フェード"
-    //% block="フェード| イン秒:%fadeInSeconds| 停止秒:%holdSeconds| アウト秒:%fadeOutSeconds| 色:%colorCode=colorNumberPicker| ワーク取消:%clear"
+    //% block="フェード| イン秒:%fadeInSeconds| 停止秒:%holdSeconds| アウト秒:%fadeOutSeconds| 色:%colorCode=colorNumberPicker| カメラ終了:%clear"
     //% fadeInSeconds.defl=1
     //% holdSeconds.defl=1
     //% fadeOutSeconds.defl=0
