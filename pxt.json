@@ -22,5 +22,6 @@
     "supportedTargets": [
         "minecraft"
     ],
-    "preferredEditor": "tsprj"
+    "preferredEditor": "tsprj",
+    "icon": "icon.png"
 }
