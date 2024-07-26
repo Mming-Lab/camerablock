@@ -172,7 +172,7 @@ namespace Camera {
     //% isClear.defl=true
     //% isClear.shadow=toggleOnOff
     //% weight=890
-    export function EasePosition(facing: Position, pos: Position, easeType: Easing, easeTime: number, isClear: boolean, isPause: boolean): void {
+    export function EasePosition(facing: Position, pos: Position, easeType: Easing, easeTime: number, isClear: boolean = true, isPause: boolean = true): void {
         const easeCmd: string = `ease ${easeTime} ${_getEasingId(easeType)} `;//イージング
         const posCmd: string = `pos ${pos} `;//移動先座標
         const facingCmd: string = `facing ${facing}`;//目標座標:
@@ -200,7 +200,7 @@ namespace Camera {
     //% isClear.defl=true
     //% isClear.shadow=toggleOnOff
     //% weight=880
-    export function EaseEntity(facing: TargetSelectorKind, pos: Position, easeType: Easing, easeTime: number, isClear: boolean, isPause: boolean): void {
+    export function EaseEntity(facing: TargetSelectorKind, pos: Position, easeType: Easing, easeTime: number, isClear: boolean = true, isPause: boolean = true): void {
         const easeCmd: string = `ease ${easeTime} ${_getEasingId(easeType)} `;//イージング
         const posCmd: string = `pos ${pos} `;//移動先座標
         const facingCmd: string = `facing ${mobs.target(facing)}`;//被写体:
@@ -230,7 +230,7 @@ namespace Camera {
     //% isClear.defl=true
     //% isClear.shadow=toggleOnOff
     //% weight=870
-    export function EaseRot(xRot: number, yRot: number, pos: Position, easeType: Easing, easeTime: number, isClear: boolean, isPause: boolean): void {
+    export function EaseRot(xRot: number, yRot: number, pos: Position, easeType: Easing, easeTime: number, isClear: boolean = true, isPause: boolean = true): void {
         const easeCmd: string = `ease ${easeTime} ${_getEasingId(easeType)} `;//イージング
         const posCmd: string = `pos ${pos} `;//移動先座標
         const rotCmd: string = `rot ${xRot} ${yRot}`;//回転:
