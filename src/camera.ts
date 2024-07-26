@@ -2,12 +2,6 @@
 enum Easing {
     //% block=""
     //% jres alias = ""
-    linear,
-    //% block=""
-    //% jres alias = ""
-    spring,
-    //% block=""
-    //% jres alias = ""
     in_quad,
     //% block=""
     //% jres alias = ""
@@ -95,7 +89,13 @@ enum Easing {
     out_elastic,
     //% block=""
     //% jres alias = ""
-    in_out_elastic
+    in_out_elastic,
+    //% block=""
+    //% jres alias = ""
+    linear,
+    //% block=""
+    //% jres alias = ""
+    spring
 }
 
 /**
@@ -160,16 +160,19 @@ namespace Camera {
 
 
     //% group="ワーク"
-    //% block="座標ワーク| 被写座標:%facing=minecraftCreateWorldPosition| カメラ位置:%pos=minecraftCreateWorldPosition| イージング種類:%easeType| イージング秒:%easeTime| ワーク中停止:%isPause| カメラ終了:%isClear"
+    //% blockId=minecraftCameraEasePosition
+    //% block="座標ワーク| 被写座標:%facing=minecraftCreateWorldPosition| カメラ位置:%pos=minecraftCreateWorldPosition| イージング種類:%easeType| イージング秒:%easeTime|| カメラ終了:%isClear| ワーク中停止:%isPause"
     //% easeTime.defl=3
     //% easeType.fieldEditor="gridpicker"
-    //% easeType.fieldOptions.width=120
+    //% easeType.fieldOptions.width=90
+    //% easeType.fieldOptions.columns=3
+    //% easeType.fieldOptions.maxRows="6"
     //% isPause.defl=true
     //% isPause.shadow=toggleOnOff
     //% isClear.defl=true
     //% isClear.shadow=toggleOnOff
     //% weight=890
-    export function EasePosition(facing: Position, pos: Position, easeType: Easing, easeTime: number, isPause?: boolean, isClear?: boolean): void {
+    export function EasePosition(facing: Position, pos: Position, easeType: Easing, easeTime: number, isClear: boolean, isPause: boolean): void {
         const easeCmd: string = `ease ${easeTime} ${_getEasingId(easeType)} `;//イージング
         const posCmd: string = `pos ${pos} `;//移動先座標
         const facingCmd: string = `facing ${facing}`;//目標座標:
@@ -186,16 +189,18 @@ namespace Camera {
     }
 
     //% group="ワーク"
-    //% block="被写体ワーク| 被写体:%facing| カメラ位置:%pos=minecraftCreateWorldPosition| イージング種類:%easeType| イージング秒:%easeTime| ワーク中停止:%isPause| カメラ終了:%isClear"
+    //% block="被写体ワーク| 被写体:%facing| カメラ位置:%pos=minecraftCreateWorldPosition| イージング種類:%easeType| イージング秒:%easeTime|| カメラ終了:%isClear| ワーク中停止:%isPause"
     //% easeTime.defl=3
     //% easeType.fieldEditor="gridpicker"
-    //% easeType.fieldOptions.width=120
+    //% easeType.fieldOptions.width=90
+    //% easeType.fieldOptions.columns=3
+    //% easeType.fieldOptions.maxRows="6"
     //% isPause.defl=true
     //% isPause.shadow=toggleOnOff
     //% isClear.defl=true
     //% isClear.shadow=toggleOnOff
     //% weight=880
-    export function EaseEntity(facing: TargetSelectorKind, pos: Position, easeType: Easing, easeTime: number, isPause?: boolean, isClear?: boolean): void {
+    export function EaseEntity(facing: TargetSelectorKind, pos: Position, easeType: Easing, easeTime: number, isClear: boolean, isPause: boolean): void {
         const easeCmd: string = `ease ${easeTime} ${_getEasingId(easeType)} `;//イージング
         const posCmd: string = `pos ${pos} `;//移動先座標
         const facingCmd: string = `facing ${mobs.target(facing)}`;//被写体:
@@ -212,18 +217,20 @@ namespace Camera {
     }
 
     //% group="ワーク"
-    //% block="回転ワーク| ピッチ:%xRotヨー:%yRot| カメラ位置:%pos=minecraftCreateWorldPosition| イージング種類:%easeType| イージング秒:%easeTime| ワーク中停止:%isPause| カメラ終了:%isClear"
+    //% block="回転ワーク| ピッチ:%xRotヨー:%yRot| カメラ位置:%pos=minecraftCreateWorldPosition| イージング種類:%easeType| イージング秒:%easeTime|| カメラ終了:%isClear| ワーク中停止:%isPause"
     //% xRot.min=-90 xRot.max=90
     //% yRot.min=-180 yRot.max=180
     //% easeTime.defl=3
     //% easeType.fieldEditor="gridpicker"
-    //% easeType.fieldOptions.width=120
+    //% easeType.fieldOptions.width=90
+    //% easeType.fieldOptions.columns=3
+    //% easeType.fieldOptions.maxRows="6"
     //% isPause.defl=true
     //% isPause.shadow=toggleOnOff
     //% isClear.defl=true
     //% isClear.shadow=toggleOnOff
     //% weight=870
-    export function EaseRot(xRot: number, yRot: number, pos: Position, easeType: Easing, easeTime: number, isPause?: boolean, isClear?: boolean): void {
+    export function EaseRot(xRot: number, yRot: number, pos: Position, easeType: Easing, easeTime: number, isClear: boolean, isPause: boolean): void {
         const easeCmd: string = `ease ${easeTime} ${_getEasingId(easeType)} `;//イージング
         const posCmd: string = `pos ${pos} `;//移動先座標
         const rotCmd: string = `rot ${xRot} ${yRot}`;//回転:
