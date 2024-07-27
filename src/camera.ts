@@ -161,7 +161,7 @@ namespace Camera {
 
     //% group="ワーク"
     //% blockId=minecraftCameraEasePosition
-    //% block="座標ワーク| 被写座標:%facing=minecraftCreateWorldPosition| カメラ位置:%pos=minecraftCreateWorldPosition| イージング種類:%easeType| イージング秒:%easeTime|| カメラ終了:%isClear| ワーク中停止:%isPause"
+    //% block="座標ワーク| 被写座標:%facing=minecraftCreateWorldPosition| カメラ位置:%pos=minecraftCreateWorldPosition| イージング種類:%easeType| イージング秒:%easeTime| カメラ終了:%isClear|| ワーク中停止:%isPause"
     //% easeTime.defl=3
     //% easeType.fieldEditor="gridpicker"
     //% easeType.fieldOptions.width=90
@@ -189,7 +189,7 @@ namespace Camera {
     }
 
     //% group="ワーク"
-    //% block="被写体ワーク| 被写体:%facing| カメラ位置:%pos=minecraftCreateWorldPosition| イージング種類:%easeType| イージング秒:%easeTime|| カメラ終了:%isClear| ワーク中停止:%isPause"
+    //% block="被写体ワーク| 被写体:%facing| カメラ位置:%pos=minecraftCreateWorldPosition| イージング種類:%easeType| イージング秒:%easeTime| カメラ終了:%isClear|| ワーク中停止:%isPause"
     //% easeTime.defl=3
     //% easeType.fieldEditor="gridpicker"
     //% easeType.fieldOptions.width=90
@@ -217,7 +217,7 @@ namespace Camera {
     }
 
     //% group="ワーク"
-    //% block="回転ワーク| ピッチ:%xRotヨー:%yRot| カメラ位置:%pos=minecraftCreateWorldPosition| イージング種類:%easeType| イージング秒:%easeTime|| カメラ終了:%isClear| ワーク中停止:%isPause"
+    //% block="回転ワーク| ピッチ:%xRotヨー:%yRot| カメラ位置:%pos=minecraftCreateWorldPosition| イージング種類:%easeType| イージング秒:%easeTime| カメラ終了:%isClear|| ワーク中停止:%isPause"
     //% xRot.min=-90 xRot.max=90
     //% yRot.min=-180 yRot.max=180
     //% easeTime.defl=3
