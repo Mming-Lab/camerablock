@@ -107,6 +107,15 @@ namespace Camera {
     const COMMND_BASE: string = `camera @s `;
     const FREE: string = `${COMMND_BASE} set minecraft:free`;
 
+    //% block="%time秒後にカメラ終了"
+    //% time.defl=0
+    //% weight=1000
+    export function CameraClear(time: number): void {
+        loops.pause(time * 1000)//待機
+        player.execute(`${COMMND_BASE} clear`);
+    }
+
+
     //% block="カメラ位置:%pos=minecraftCreateWorldPosition"
     //% weight=990
     export function Pos(pos: Position): void {
@@ -116,7 +125,7 @@ namespace Camera {
         player.execute(cmd);//実行
     }
 
-
+    //% group="被写指定"
     //% block="被写体:%facing"
     //% weight=980
     export function FacingEntity(facing: TargetSelectorKind): void {
@@ -127,7 +136,7 @@ namespace Camera {
         player.execute(cmd);//実行
     }
 
-
+    //% group="被写指定"
     //% block="被写座標:%facing=minecraftCreateWorldPosition"
     //% weight=970
     export function FacingPosition(facing: Position): void {
@@ -138,6 +147,7 @@ namespace Camera {
         player.execute(cmd);//実行
     }
 
+    //% group="被写指定"
     //% block="カメラ回転| ピッチ:%xRot ヨー:%yRot"
     //% xRot.min=-90 xRot.max=90
     //% yRot.min=-180 yRot.max=180
@@ -150,13 +160,6 @@ namespace Camera {
         player.execute(cmd);//実行
     }
 
-    //% block="%time秒後にカメラ終了"
-    //% time.defl=0
-    //% weight=950
-    export function CameraClear(time: number): void {
-        loops.pause(time * 1000)//待機
-        player.execute(`${COMMND_BASE} clear`);
-    }
 
 
     //% group="ワーク"
