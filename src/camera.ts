@@ -116,6 +116,7 @@ namespace Camera {
     }
 
 
+
     //% block="カメラ位置:%pos=minecraftCreateWorldPosition"
     //% weight=990
     export function Pos(pos: Position): void {
@@ -125,10 +126,11 @@ namespace Camera {
         player.execute(cmd);//実行
     }
 
-    //% group="被写指定"
-    //% block="被写体:%facing"
+    //% group="アングル"
+    //% block="カメラ位置:%pos=minecraftCreateWorldPosition| 被写体:%facing"
     //% weight=980
-    export function FacingEntity(facing: TargetSelectorKind): void {
+    export function FacingEntity(pos: Position, facing: TargetSelectorKind): void {
+        Pos(pos);//カメラ位置
         const facingCmd: string = `facing ${mobs.target(facing)}`;//被写体:
         //camera <players: target> set <preset: string> facing <lookAtEntity: target>
         const cmd: string = `${FREE} ${facingCmd}`;//コマンド
@@ -136,10 +138,11 @@ namespace Camera {
         player.execute(cmd);//実行
     }
 
-    //% group="被写指定"
-    //% block="被写座標:%facing=minecraftCreateWorldPosition"
+    //% group="アングル"
+    //% block="カメラ位置:%pos=minecraftCreateWorldPosition| 被写座標:%facing=minecraftCreateWorldPosition"
     //% weight=970
-    export function FacingPosition(facing: Position): void {
+    export function FacingPosition(pos: Position, facing: Position): void {
+        Pos(pos);//カメラ位置
         const facingCmd: string = `facing ${facing}`;//目標座標:
         // camera <players: target> set <preset: string> facing <lookAtPosition: x y z>
         const cmd: string = `${FREE} ${facingCmd}`;//コマンド
@@ -147,12 +150,13 @@ namespace Camera {
         player.execute(cmd);//実行
     }
 
-    //% group="被写指定"
-    //% block="カメラ回転| ピッチ:%xRot ヨー:%yRot"
+    //% group="アングル"
+    //% block="カメラ位置:%pos=minecraftCreateWorldPosition| 回転| ピッチ:%xRot ヨー:%yRot"
     //% xRot.min=-90 xRot.max=90
     //% yRot.min=-180 yRot.max=180
     //% weight=960
-    export function Rot(xRot: number, yRot: number): void {
+    export function Rot(pos: Position, xRot: number, yRot: number): void {
+        Pos(pos);//カメラ位置
         const rotCmd: string = `rot ${xRot} ${yRot}`;//回転:
         // camera <players: target> set <preset: string> rot <xRot: value> <yRot: value>
         const cmd: string = `${FREE} ${rotCmd}`;//コマンド
@@ -164,7 +168,7 @@ namespace Camera {
 
     //% group="ワーク"
     //% blockId=minecraftCameraEasePosition
-    //% block="座標ワーク| 被写座標:%facing=minecraftCreateWorldPosition| カメラ位置:%pos=minecraftCreateWorldPosition| イージング種類:%easeType| イージング秒:%easeTime| カメラ終了:%isClear|| ワーク中停止:%isPause"
+    //% block="座標ワーク| カメラ位置:%pos=minecraftCreateWorldPosition| 被写座標:%facing=minecraftCreateWorldPosition| イージング種類:%easeType| イージング秒:%easeTime| カメラ終了:%isClear|| ワーク中停止:%isPause"
     //% easeTime.defl=3
     //% easeType.fieldEditor="gridpicker"
     //% easeType.fieldOptions.width=90
@@ -175,7 +179,7 @@ namespace Camera {
     //% isClear.defl=true
     //% isClear.shadow=toggleOnOff
     //% weight=890
-    export function EasePosition(facing: Position, pos: Position, easeType: Easing, easeTime: number, isClear: boolean = true, isPause: boolean = true): void {
+    export function EasePosition(pos: Position, facing: Position, easeType: Easing, easeTime: number, isClear: boolean = true, isPause: boolean = true): void {
         const easeCmd: string = `ease ${easeTime} ${_getEasingId(easeType)} `;//イージング
         const posCmd: string = `pos ${pos} `;//移動先座標
         const facingCmd: string = `facing ${facing}`;//目標座標:
@@ -192,7 +196,7 @@ namespace Camera {
     }
 
     //% group="ワーク"
-    //% block="被写体ワーク| 被写体:%facing| カメラ位置:%pos=minecraftCreateWorldPosition| イージング種類:%easeType| イージング秒:%easeTime| カメラ終了:%isClear|| ワーク中停止:%isPause"
+    //% block="被写体ワーク| カメラ位置:%pos=minecraftCreateWorldPosition| 被写体:%facing| イージング種類:%easeType| イージング秒:%easeTime| カメラ終了:%isClear|| ワーク中停止:%isPause"
     //% easeTime.defl=3
     //% easeType.fieldEditor="gridpicker"
     //% easeType.fieldOptions.width=90
@@ -203,7 +207,7 @@ namespace Camera {
     //% isClear.defl=true
     //% isClear.shadow=toggleOnOff
     //% weight=880
-    export function EaseEntity(facing: TargetSelectorKind, pos: Position, easeType: Easing, easeTime: number, isClear: boolean = true, isPause: boolean = true): void {
+    export function EaseEntity(pos: Position, facing: TargetSelectorKind, easeType: Easing, easeTime: number, isClear: boolean = true, isPause: boolean = true): void {
         const easeCmd: string = `ease ${easeTime} ${_getEasingId(easeType)} `;//イージング
         const posCmd: string = `pos ${pos} `;//移動先座標
         const facingCmd: string = `facing ${mobs.target(facing)}`;//被写体:
@@ -220,7 +224,7 @@ namespace Camera {
     }
 
     //% group="ワーク"
-    //% block="回転ワーク| ピッチ:%xRotヨー:%yRot| カメラ位置:%pos=minecraftCreateWorldPosition| イージング種類:%easeType| イージング秒:%easeTime| カメラ終了:%isClear|| ワーク中停止:%isPause"
+    //% block="回転ワーク| カメラ位置:%pos=minecraftCreateWorldPosition| ピッチ:%xRotヨー:%yRot| イージング種類:%easeType| イージング秒:%easeTime| カメラ終了:%isClear|| ワーク中停止:%isPause"
     //% xRot.min=-90 xRot.max=90
     //% yRot.min=-180 yRot.max=180
     //% easeTime.defl=3
@@ -233,7 +237,7 @@ namespace Camera {
     //% isClear.defl=true
     //% isClear.shadow=toggleOnOff
     //% weight=870
-    export function EaseRot(xRot: number, yRot: number, pos: Position, easeType: Easing, easeTime: number, isClear: boolean = true, isPause: boolean = true): void {
+    export function EaseRot(pos: Position, xRot: number, yRot: number, easeType: Easing, easeTime: number, isClear: boolean = true, isPause: boolean = true): void {
         const easeCmd: string = `ease ${easeTime} ${_getEasingId(easeType)} `;//イージング
         const posCmd: string = `pos ${pos} `;//移動先座標
         const rotCmd: string = `rot ${xRot} ${yRot}`;//回転:
