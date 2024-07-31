@@ -104,7 +104,7 @@ namespace Camera {
     const COMMND_BASE: string = `camera @s `;
     const FREE: string = `${COMMND_BASE} set minecraft:free`;
 
-    //% block="The camera closes after %time second"
+    //% block="Camera Clear after %time second"
     //% time.defl=0
     //% weight=1000
     export function CameraClear(time: number): void {
