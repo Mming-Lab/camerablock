@@ -1,5 +1,5 @@
 {
-    "name": "CameraBlock",
+    "name": "camerablock",
     "version": "1.2.0",
     "description": "",
     "dependencies": {
@@ -11,7 +11,8 @@
         "main.ts",
         "README.md",
         "src/camera.ts",
-        "src/Easing.jres"
+        "src/Easing.jres",
+        "_locales/ja/camerablock-strings.json"
     ],
     "testFiles": [
         "test.ts"

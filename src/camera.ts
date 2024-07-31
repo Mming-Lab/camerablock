@@ -98,16 +98,13 @@ enum Easing {
     spring
 }
 
-/**
- * Custom blocks
- */
-//% weight=1 color=#54bfff icon="\uf03d" block="カメラ"
+//%  block="Camera" weight=1 color=#54bfff icon="\uf03d"
 namespace Camera {
 
     const COMMND_BASE: string = `camera @s `;
     const FREE: string = `${COMMND_BASE} set minecraft:free`;
 
-    //% block="%time秒後にカメラ終了"
+    //% block="The camera closes after %time second"
     //% time.defl=0
     //% weight=1000
     export function CameraClear(time: number): void {
@@ -117,7 +114,7 @@ namespace Camera {
 
 
 
-    //% block="カメラ位置:%pos=minecraftCreateWorldPosition"
+    //% block="Camera position:%pos=minecraftCreateWorldPosition"
     //% weight=990
     export function Pos(pos: Position): void {
         const posCmd: string = `pos ${pos} `;//移動先座標
@@ -126,8 +123,8 @@ namespace Camera {
         player.execute(cmd);//実行
     }
 
-    //% group="アングル"
-    //% block="カメラ位置:%pos=minecraftCreateWorldPosition| 被写体:%facing"
+    //% group="Camera Angles"
+    //% block="Camera position:%pos=minecraftCreateWorldPosition| subject:%facing"
     //% weight=980
     export function FacingEntity(pos: Position, facing: TargetSelectorKind): void {
         Pos(pos);//カメラ位置
@@ -138,8 +135,8 @@ namespace Camera {
         player.execute(cmd);//実行
     }
 
-    //% group="アングル"
-    //% block="カメラ位置:%pos=minecraftCreateWorldPosition| 被写座標:%facing=minecraftCreateWorldPosition"
+    //% group="Camera Angles"
+    //% block="Camera position:%pos=minecraftCreateWorldPosition| position of subject:%facing=minecraftCreateWorldPosition"
     //% weight=970
     export function FacingPosition(pos: Position, facing: Position): void {
         Pos(pos);//カメラ位置
@@ -150,8 +147,8 @@ namespace Camera {
         player.execute(cmd);//実行
     }
 
-    //% group="アングル"
-    //% block="カメラ位置:%pos=minecraftCreateWorldPosition| 回転| ピッチ:%xRot ヨー:%yRot"
+    //% group="Camera Angles"
+    //% block="Camera position:%pos=minecraftCreateWorldPosition| rotation| pitch:%xRot yaw:%yRot"
     //% xRot.min=-90 xRot.max=90
     //% yRot.min=-180 yRot.max=180
     //% weight=960
@@ -166,9 +163,9 @@ namespace Camera {
 
 
 
-    //% group="ワーク"
+    //% group="Camera Work"
     //% blockId=minecraftCameraEasePosition
-    //% block="座標ワーク| カメラ位置:%pos=minecraftCreateWorldPosition| 被写座標:%facing=minecraftCreateWorldPosition| イージング種類:%easeType| イージング秒:%easeTime| カメラ終了:%isClear|| ワーク中停止:%isPause"
+    //% block="position work| Camera position:%pos=minecraftCreateWorldPosition| position of subject:%facing=minecraftCreateWorldPosition| Easing of Type:%easeType| Easing of sec秒:%easeTime| Camera Clear:%isClear|| Pause during work:%isPause"
     //% easeTime.defl=3
     //% easeType.fieldEditor="gridpicker"
     //% easeType.fieldOptions.width=90
@@ -195,8 +192,8 @@ namespace Camera {
         }
     }
 
-    //% group="ワーク"
-    //% block="被写体ワーク| カメラ位置:%pos=minecraftCreateWorldPosition| 被写体:%facing| イージング種類:%easeType| イージング秒:%easeTime| カメラ終了:%isClear|| ワーク中停止:%isPause"
+    //% group="Camera Work"
+    //% block="subject work| Camera position:%pos=minecraftCreateWorldPosition| subject:%facing| Easing of Type:%easeType| Easing of sec秒:%easeTime| Camera Clear:%isClear|| Pause during work:%isPause"
     //% easeTime.defl=3
     //% easeType.fieldEditor="gridpicker"
     //% easeType.fieldOptions.width=90
@@ -223,8 +220,8 @@ namespace Camera {
         }
     }
 
-    //% group="ワーク"
-    //% block="回転ワーク| カメラ位置:%pos=minecraftCreateWorldPosition| ピッチ:%xRotヨー:%yRot| イージング種類:%easeType| イージング秒:%easeTime| カメラ終了:%isClear|| ワーク中停止:%isPause"
+    //% group="Camera Work"
+    //% block="rotation work| Camera position:%pos=minecraftCreateWorldPosition| pitch:%xRot yaw:%yRot| Easing of Type:%easeType| Easing of sec秒:%easeTime| Camera Clear:%isClear|| Pause during work:%isPause"
     //% xRot.min=-90 xRot.max=90
     //% yRot.min=-180 yRot.max=180
     //% easeTime.defl=3
@@ -253,16 +250,16 @@ namespace Camera {
         }
     }
 
-    //% group="フェード"
-    //% block="フェード| イン秒:%fadeInSeconds| 停止秒:%holdSeconds| アウト秒:%fadeOutSeconds| 色:%colorCode=colorNumberPicker| カメラ終了:%clear"
+    //% group="Fade"
+    //% block="Fade| In(sec):%fadeInSeconds| Hold(sec):%holdSeconds| Out(sec):%fadeOutSeconds| color:%colorCode=colorNumberPicker| Camera Clear:%isClear"
     //% fadeInSeconds.defl=1
     //% holdSeconds.defl=1
     //% fadeOutSeconds.defl=0
     //% colorCode.defl=0x000000
-    //% clear.defl=false
-    //% clear.shadow=toggleOnOff
+    //% isClear.defl=false
+    //% isClear.shadow=toggleOnOff
     //% weight=790
-    export function fadeTime(fadeInSeconds: number, holdSeconds: number, fadeOutSeconds: number, colorCode: number, clear: boolean): void {
+    export function fadeTime(fadeInSeconds: number, holdSeconds: number, fadeOutSeconds: number, colorCode: number, isClear: boolean): void {
         const fadeTimeCmd: string = `fade time ${fadeInSeconds} ${holdSeconds} ${fadeOutSeconds} `
         const red = (colorCode >> 16) & 0xFF;
         const green = (colorCode >> 8) & 0xFF;
@@ -273,13 +270,13 @@ namespace Camera {
         //player.say(cmd);
         player.execute(cmd);//実行
         loops.pause((fadeInSeconds + holdSeconds + fadeOutSeconds) * 1000)//待機
-        if (clear) {
+        if (isClear) {
             CameraClear(0); //カメラワーク取消
         }
     }
 
-    //% group="フェード"
-    //% block="赤%red| 緑%green|青%blue"
+    //% group="Fade"
+    //% block="red%red| green%green|blue%blue"
     //% red.min=0 red.max=255 
     //% green.min=0 green.max=255
     //% blue.min=0 blue.max=255
@@ -288,7 +285,7 @@ namespace Camera {
         return ((red & 0xFF) << 16) | ((green & 0xFF) << 8) | (blue & 0xFF);
     }
 
-    //% group="フェード"
+    //% group="Fade"
     //% block="%color=colorNumberPicker"
     //% color.defl=0xff0000
     //% weight=770

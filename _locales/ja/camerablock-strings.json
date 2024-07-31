@@ -1,0 +1,17 @@
+{
+    "Camera.CameraClear|block": "%time秒後にカメラ終了",
+    "Camera.Pos|block": "カメラ位置:%pos=minecraftCreateWorldPosition",
+    "Camera.FacingEntity|block": "カメラ位置:%pos=minecraftCreateWorldPosition| 被写体:%facing",
+    "Camera.FacingPosition|block": "カメラ位置:%pos=minecraftCreateWorldPosition| 被写座標:%facing=minecraftCreateWorldPosition",
+    "Camera.Rot|block": "カメラ位置:%pos=minecraftCreateWorldPosition| 回転| ピッチ:%xRot ヨー:%yRot",
+    "Camera.EasePosition|block": "座標ワーク| カメラ位置:%pos=minecraftCreateWorldPosition| 被写座標:%facing=minecraftCreateWorldPosition| イージング種類:%easeType| イージング秒:%easeTime| カメラ終了:%isClear|| ワーク中停止:%isPause",
+    "Camera.EaseEntity|block": "被写体ワーク| カメラ位置:%pos=minecraftCreateWorldPosition| 被写体:%facing| イージング種類:%easeType| イージング秒:%easeTime| カメラ終了:%isClear|| ワーク中停止:%isPause",
+    "Camera.EaseRot|block": "回転ワーク| カメラ位置:%pos=minecraftCreateWorldPosition| ピッチ:%xRotヨー:%yRot| イージング種類:%easeType| イージング秒:%easeTime| カメラ終了:%isClear|| ワーク中停止:%isPause",
+    "Camera.fadeTime|block": "フェード| イン秒:%fadeInSeconds| 停止秒:%holdSeconds| アウト秒:%fadeOutSeconds| 色:%colorCode=colorNumberPicker| カメラ終了:%isClear",
+    "Camera.rgb|block": "赤%red| 緑%green|青%blue",
+    "Camera|block": "カメラ",
+    "{id:group}Camera Angles": "カメラアングル",
+    "{id:group}Camera Work": "カメラワーク",
+    "{id:group}Fade": "フェード",
+    "{id:category}Camera": "カメラ"
+}
