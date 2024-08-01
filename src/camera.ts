@@ -165,7 +165,7 @@ namespace Camera {
 
     //% group="Camera Work"
     //% blockId=minecraftCameraEasePosition
-    //% block="position work| Camera position:%pos=minecraftCreateWorldPosition| position of subject:%facing=minecraftCreateWorldPosition| Easing of Type:%easeType| Easing of sec秒:%easeTime| Camera Clear:%isClear|| Pause during work:%isPause"
+    //% block="position work| Camera position:%pos=minecraftCreateWorldPosition| position of subject:%facing=minecraftCreateWorldPosition| Easing of Type:%easeType| Easing of sec:%easeTime| Camera Clear:%isClear|| Pause during work:%isPause"
     //% easeTime.defl=3
     //% easeType.fieldEditor="gridpicker"
     //% easeType.fieldOptions.width=90
@@ -193,7 +193,7 @@ namespace Camera {
     }
 
     //% group="Camera Work"
-    //% block="subject work| Camera position:%pos=minecraftCreateWorldPosition| subject:%facing| Easing of Type:%easeType| Easing of sec秒:%easeTime| Camera Clear:%isClear|| Pause during work:%isPause"
+    //% block="subject work| Camera position:%pos=minecraftCreateWorldPosition| subject:%facing| Easing of Type:%easeType| Easing of sec:%easeTime| Camera Clear:%isClear|| Pause during work:%isPause"
     //% easeTime.defl=3
     //% easeType.fieldEditor="gridpicker"
     //% easeType.fieldOptions.width=90
@@ -221,7 +221,7 @@ namespace Camera {
     }
 
     //% group="Camera Work"
-    //% block="rotation work| Camera position:%pos=minecraftCreateWorldPosition| pitch:%xRot yaw:%yRot| Easing of Type:%easeType| Easing of sec秒:%easeTime| Camera Clear:%isClear|| Pause during work:%isPause"
+    //% block="rotation work| Camera position:%pos=minecraftCreateWorldPosition| pitch:%xRot yaw:%yRot| Easing of Type:%easeType| Easing of sec:%easeTime| Camera Clear:%isClear|| Pause during work:%isPause"
     //% xRot.min=-90 xRot.max=90
     //% yRot.min=-180 yRot.max=180
     //% easeTime.defl=3
