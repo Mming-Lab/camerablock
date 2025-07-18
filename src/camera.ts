@@ -101,15 +101,15 @@ enum Easing {
 //%  block="Camera" weight=1 color=#54bfff icon="\uf03d"
 namespace Camera {
 
-    const COMMND_BASE: string = `camera @s `;
-    const FREE: string = `${COMMND_BASE} set minecraft:free`;
+    const COMMAND_BASE: string = `camera @s `;
+    const FREE: string = `${COMMAND_BASE} set minecraft:free`;
 
     //% block="Camera Clear after %time second"
     //% time.defl=0
     //% weight=1000
     export function CameraClear(time: number): void {
         loops.pause(time * 1000)//待機
-        player.execute(`${COMMND_BASE} clear`);
+        player.execute(`${COMMAND_BASE} clear`);
     }
 
 
@@ -266,7 +266,7 @@ namespace Camera {
         const blue = colorCode & 0xFF;
         const colorCmd: string = `color ${red} ${green} ${blue} `
         //camera <players: target> fade time <fadeInSeconds: float> <holdSeconds: float> <fadeOutSeconds: float> color <red: int> <green: int> <blue: int>
-        const cmd: string = `${COMMND_BASE} ${fadeTimeCmd} ${colorCmd}`;
+        const cmd: string = `${COMMAND_BASE} ${fadeTimeCmd} ${colorCmd}`;
         //player.say(cmd);
         player.execute(cmd);//実行
         loops.pause((fadeInSeconds + holdSeconds + fadeOutSeconds) * 1000)//待機
