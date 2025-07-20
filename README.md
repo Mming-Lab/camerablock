@@ -38,3 +38,33 @@ A MakeCode extension that provides camera control blocks for Minecraft Education
 ### Fade
 - **Fade**: Screen fade effects with customizable timing and colors
 - **RGB color**: Create custom colors for fade effects
+
+## Installation
+
+### Using the Extension in MakeCode
+
+1. Open [Minecraft Education Edition MakeCode Editor](https://minecraft.makecode.com/)
+2. Create a new project or open an existing one
+3. Click on **Extensions** (gear icon)
+4. Click on **Import URL**
+5. Enter the repository URL:
+   ```
+   https://github.com/Mming-Lab/camerablock
+   ```
+
+### Using Specific Branches or Versions
+
+To use a specific branch (e.g., for testing new features):
+```
+https://github.com/Mming-Lab/camerablock#branch-name
+```
+
+For example, to use the verification branch:
+```
+https://github.com/Mming-Lab/camerablock#verification
+```
+
+**Note**: 
+- Using releases/tags is recommended over branches for stability
+- Branch specification feature is still being tested
+- Always backup your project before testing with development branches
