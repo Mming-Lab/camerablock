@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:makecode.com)"
+      "WebFetch(domain:makecode.com)",
+      "WebFetch(domain:learn.microsoft.com)"
     ],
     "deny": []
   }

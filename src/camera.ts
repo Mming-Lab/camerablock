@@ -98,11 +98,45 @@ enum Easing {
     spring
 }
 
+enum CameraPreset {
+    //% block="Free"
+    Free,
+    //% block="First Person"
+    FirstPerson,
+    //% block="Third Person"
+    ThirdPerson,
+    //% block="Third Person Front"
+    ThirdPersonFront,
+    //% block="Fixed Boom"
+    FixedBoom
+}
+
 //%  block="Camera" weight=1 color=#54bfff icon="\uf03d"
 namespace Camera {
 
     const COMMAND_BASE: string = `camera @s `;
     const FREE: string = `${COMMAND_BASE} set minecraft:free`;
+
+    function _getPresetName(preset: CameraPreset): string {
+        switch (preset) {
+            case CameraPreset.Free: return "minecraft:free";
+            case CameraPreset.FirstPerson: return "minecraft:first_person";
+            case CameraPreset.ThirdPerson: return "minecraft:third_person";
+            case CameraPreset.ThirdPersonFront: return "minecraft:third_person_front";
+            case CameraPreset.FixedBoom: return "minecraft:fixed_boom";
+            default:
+                player.errorMessage("Unknown CameraPreset enum value");
+                return "minecraft:free";
+        }
+    }
+
+    //% block="Camera preset:%preset"
+    //% weight=1010
+    export function SetPreset(preset: CameraPreset): void {
+        const presetName = _getPresetName(preset);
+        const cmd = `${COMMAND_BASE} set ${presetName}`;
+        player.execute(cmd);
+    }
 
     //% block="Camera Clear after %time second"
     //% time.defl=0
@@ -136,6 +170,18 @@ namespace Camera {
     }
 
     //% group="Camera Angles"
+    //% block="Camera position:%pos=minecraftCreateWorldPosition| subject:%facing| offset x:%x y:%y z:%z"
+    //% x.defl=0 y.defl=0 z.defl=0
+    //% weight=975
+    export function FacingEntityWithOffset(pos: Position, facing: TargetSelectorKind, x: number, y: number, z: number): void {
+        const posCmd: string = `pos ${pos} `;
+        const facingCmd: string = `facing ${mobs.target(facing)} `;
+        const offsetCmd: string = `entity_offset ${x} ${y} ${z}`;
+        const cmd: string = `${FREE} ${posCmd}${facingCmd}${offsetCmd}`;
+        player.execute(cmd);
+    }
+
+    //% group="Camera Angles"
     //% block="Camera position:%pos=minecraftCreateWorldPosition| position of subject:%facing=minecraftCreateWorldPosition"
     //% weight=970
     export function FacingPosition(pos: Position, facing: Position): void {
@@ -145,6 +191,18 @@ namespace Camera {
         const cmd: string = `${FREE} ${facingCmd}`;//コマンド
         //player.say(cmd);
         player.execute(cmd);//実行
+    }
+
+    //% group="Camera Angles"
+    //% block="Camera position:%pos=minecraftCreateWorldPosition| position of subject:%facing=minecraftCreateWorldPosition| view offset x:%x y:%y z:%z"
+    //% x.defl=0 y.defl=0 z.defl=0
+    //% weight=965
+    export function FacingPositionWithViewOffset(pos: Position, facing: Position, x: number, y: number, z: number): void {
+        const posCmd: string = `pos ${pos} `;
+        const facingCmd: string = `facing ${facing} `;
+        const offsetCmd: string = `view_offset ${x} ${y} ${z}`;
+        const cmd: string = `${FREE} ${posCmd}${facingCmd}${offsetCmd}`;
+        player.execute(cmd);
     }
 
     //% group="Camera Angles"
@@ -165,7 +223,7 @@ namespace Camera {
 
     //% group="Camera Work"
     //% blockId=minecraftCameraEasePosition
-    //% block="position work| Camera position:%pos=minecraftCreateWorldPosition| position of subject:%facing=minecraftCreateWorldPosition| Easing of Type:%easeType| Easing of sec:%easeTime| Camera Clear:%isClear|| Pause during work:%isPause"
+    //% block="Camera smooth move| position:%pos=minecraftCreateWorldPosition| focus:%facing=minecraftCreateWorldPosition| easing:%easeType| time:%easeTime sec| auto clear:%isClear|| wait completion:%isPause"
     //% easeTime.defl=3
     //% easeType.fieldEditor="gridpicker"
     //% easeType.fieldOptions.width=90
@@ -193,7 +251,7 @@ namespace Camera {
     }
 
     //% group="Camera Work"
-    //% block="subject work| Camera position:%pos=minecraftCreateWorldPosition| subject:%facing| Easing of Type:%easeType| Easing of sec:%easeTime| Camera Clear:%isClear|| Pause during work:%isPause"
+    //% block="Camera track entity| position:%pos=minecraftCreateWorldPosition| target:%facing| easing:%easeType| time:%easeTime sec| auto clear:%isClear|| wait completion:%isPause"
     //% easeTime.defl=3
     //% easeType.fieldEditor="gridpicker"
     //% easeType.fieldOptions.width=90
@@ -221,7 +279,7 @@ namespace Camera {
     }
 
     //% group="Camera Work"
-    //% block="rotation work| Camera position:%pos=minecraftCreateWorldPosition| pitch:%xRot yaw:%yRot| Easing of Type:%easeType| Easing of sec:%easeTime| Camera Clear:%isClear|| Pause during work:%isPause"
+    //% block="Camera smooth rotate| position:%pos=minecraftCreateWorldPosition| pitch:%xRot yaw:%yRot| easing:%easeType| time:%easeTime sec| auto clear:%isClear|| wait completion:%isPause"
     //% xRot.min=-90 xRot.max=90
     //% yRot.min=-180 yRot.max=180
     //% easeTime.defl=3
@@ -291,6 +349,51 @@ namespace Camera {
     //% weight=770
     export function setcolors(color: number): number {
         return color;
+    }
+
+    //% group="Camera Settings"
+    //% block="Camera FOV:%fov"
+    //% fov.min=10 fov.max=170
+    //% fov.defl=90
+    //% weight=750
+    export function SetFOV(fov: number): void {
+        const cmd: string = `${COMMAND_BASE} set minecraft:free fov ${fov}`;
+        player.execute(cmd);
+    }
+
+    //% group="Camera Position"
+    //% block="Camera relative to player| forward:%forward right:%right up:%up"
+    //% forward.defl=0 right.defl=0 up.defl=5
+    //% weight=940
+    export function SetRelativeToPlayer(forward: number, right: number, up: number): void {
+        const cmd: string = `${COMMAND_BASE} set minecraft:free pos ^${right} ^${up} ^${forward}`;
+        player.execute(cmd);
+    }
+
+    //% group="Camera Position"
+    //% block="Camera distance from player:%distance| facing player"
+    //% distance.defl=10
+    //% weight=930
+    export function SetDistanceFromPlayer(distance: number): void {
+        const cmd: string = `${COMMAND_BASE} set minecraft:free pos ^0 ^0 ^${distance} facing @s`;
+        player.execute(cmd);
+    }
+
+    //% group="Camera Position"
+    //% block="Camera above player| height:%height"
+    //% height.defl=10
+    //% weight=920
+    export function SetAbovePlayer(height: number): void {
+        const cmd: string = `${COMMAND_BASE} set minecraft:free pos ^0 ^${height} ^0 facing @s`;
+        player.execute(cmd);
+    }
+
+    //% group="Camera Angles"
+    //% block="Camera face self"
+    //% weight=950
+    export function FaceSelf(): void {
+        const cmd: string = `${COMMAND_BASE} set minecraft:free facing @s`;
+        player.execute(cmd);
     }
 
     export function _getEasingId(id: Easing) {
