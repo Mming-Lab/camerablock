@@ -1,1 +1,1 @@
-<xml xmlns="https://developers.google.com/blockly/xml"></xml>
+<xml xmlns="https://developers.google.com/blockly/xml"><variables></variables><block type="minecraftOnChat" id="a:w4}y)s?SLZ4xt`X9D}" x="0" y="0"><mutation xmlns="http://www.w3.org/1999/xhtml" numargs="0"></mutation><value name="command"><shadow type="text" id=":keL$0$c_xO%e}!2#_s}"><field name="TEXT">jump</field></shadow></value><statement name="HANDLER"><block type="Camera_SetPreset" id="!)V{1NV~T+mq[(#}_My."><field name="preset">CameraPreset.Free</field></block></statement></block></xml>
