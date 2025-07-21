@@ -1,6 +1,10 @@
 # Camera Block Extension for Minecraft Education Edition
 
-[日本語版は下にあります](#日本語版)
+🌐 **Languages**: [English](#english) | [日本語](README_ja.md)
+
+---
+
+## English
 
 A MakeCode extension that provides camera control blocks for Minecraft Education Edition. Create cinematic shots and smooth camera movements with easy-to-use visual blocks - perfect for students and educators!
 
@@ -11,17 +15,29 @@ Transform complex camera commands into simple, visual blocks that anyone can use
 ### Before (Complex Commands)
 ```
 /camera @s set minecraft:free pos 10 5 20 rot 45 30 ease_in_out_sine 3.0
+/inputpermission set @s movement disabled
 ```
 
 ### After (Simple Blocks)
 - 📍 **Move camera to** - Click where you want to go
+- 🎯 **First-person view** - Switch camera preset instantly
 - 🔄 **Smooth rotate** - Choose how it moves
+- 🎮 **Player movement** - Enable/disable with toggle
 - 🌈 **Screen effect** - Pick colors and effects
 - ⏰ **3 seconds** - Set time with sliders
 
 ## ✨ Features
 
-### 🎯 Basic Camera Control
+### 🎯 Camera Presets (NEW!)
+- **First-person view**: Switch to standard first-person camera
+- **Third-person view**: Get behind-the-player perspective
+- **Front view**: Face-to-face selfie-style camera
+
+### 🎮 Input Control (NEW!)
+- **Player movement**: Enable/disable player movement (WASD)
+- **Camera control**: Enable/disable mouse/touch camera control
+
+### 📍 Basic Camera Control
 - **Move camera to**: Instantly position your camera anywhere
 - **Look at entity**: Focus on players, mobs, or objects
 - **Look at position**: Point camera at specific coordinates
@@ -37,6 +53,18 @@ Transform complex camera commands into simple, visual blocks that anyone can use
 - **Screen effects**: Fade to dark/light with custom colors
 - **Color maker**: Create any color with red, green, blue values
 - **Timing control**: Perfect scene transitions
+
+## 🎬 Cinematic Mode Example
+
+Create professional-looking shots by combining blocks:
+
+```blocks
+1. Player movement: disabled
+2. Camera control: disabled  
+3. Smooth move camera (existing advanced blocks)
+4. Player movement: enabled
+5. Camera control: enabled
+```
 
 ## 🚀 Perfect for Education
 
@@ -62,7 +90,7 @@ Transform complex camera commands into simple, visual blocks that anyone can use
 
 For stable releases, use:
 ```
-https://github.com/Mming-Lab/camerablock#v1.3.0
+https://github.com/Mming-Lab/camerablock#v1.4.0
 ```
 
 ## 🎓 Educational Use Cases
@@ -72,86 +100,27 @@ https://github.com/Mming-Lab/camerablock#v1.3.0
 - **Action scenes**: Create dramatic moments
 - **Landscape filming**: Capture beautiful worlds
 - **Storytelling**: Add cinematic flair to narratives
+- **Interactive presentations**: Control camera and player for demos
+
+## 📈 Version History
+
+- **v1.4.0** (Latest): Added camera presets and input control blocks
+- **v1.3.0**: Enhanced documentation and usability improvements
+- **v1.2.x**: Core camera movement and effects system
+- **v1.0.0**: Initial release with basic camera controls
+
+## 🤝 Contributing
+
+We welcome contributions! Please feel free to submit issues and pull requests.
 
 ## 👨‍💻 About the Developer
 
 Created by [mming Programming Lab](https://mming-lab.github.io/) - dedicated to making programming accessible and fun for everyone!
 
+## 📄 License
+
+This project is open source and available under the MIT License.
+
 ---
 
-# 日本語版
-
-Minecraft Education Edition用のMakeCode拡張機能です。複雑なカメラコマンドを簡単なビジュアルブロックに変換して、誰でも映画のようなカメラワークを作れます！
-
-## 🎬 この拡張機能のすごいところ
-
-難しいコマンドを簡単なブロックに変換：
-
-### 昔の方法（複雑なコマンド）
-```
-/camera @s set minecraft:free pos 10 5 20 rot 45 30 ease_in_out_sine 3.0
-```
-
-### 今の方法（簡単ブロック）
-- 📍 **カメラを移動** - 行きたい場所をクリック
-- 🔄 **スムーズ回転** - 動き方を選ぶだけ
-- 🌈 **画面エフェクト** - 色を選んでポン
-- ⏰ **3秒** - 時間をスライダーで設定
-
-## ✨ 機能
-
-### 🎯 基本カメラ制御
-- **カメラを移動**: カメラを好きな場所に瞬間移動
-- **を向く**: プレイヤーやモブを自動追跡
-- **座標を向く**: 指定した座標を見つめる
-- **角度制御**: 上下・左右の角度を精密設定
-
-### 🎭 スムーズなカメラワーク
-- **スムーズ移動**: なめらかに位置間を移動
-- **スムーズ追跡**: エンティティを滑らかに追跡
-- **スムーズ回転**: 映画のような回転効果
-- **28種類の動き方**: やわらかい動きからバウンド効果まで
-
-### 🎨 画面エフェクト
-- **画面エフェクト**: カスタム色でフェードイン・アウト
-- **色を作る**: 赤・緑・青で自由に色作成
-- **タイミング制御**: 完璧なシーン切り替え
-
-## 🚀 教育に最適
-
-- **ビジュアルプログラミング**: 覚える文字コマンドなし
-- **初心者フレンドリー**: 直感的なブロック操作
-- **創造的プロジェクト**: 映画のような作品制作
-- **STEM学習**: 遊びながらプログラミング学習
-
-## 📚 インストール方法
-
-### MakeCodeでの使用方法
-
-1. [Minecraft Education Edition MakeCodeエディタ](https://minecraft.makecode.com/)を開く
-2. 新しいプロジェクトを作成または既存プロジェクトを開く
-3. **拡張機能**（歯車アイコン）をクリック
-4. **URLをインポート**をクリック
-5. リポジトリURLを入力：
-   ```
-   https://github.com/Mming-Lab/camerablock
-   ```
-
-### 特定バージョンの使用
-
-安定版を使用する場合：
-```
-https://github.com/Mming-Lab/camerablock#v1.3.0
-```
-
-## 🎓 教育での活用例
-
-- **建物紹介**: 生徒の作品を紹介
-- **冒険動画**: 探検の記録
-- **アクションシーン**: ドラマチックな演出
-- **風景撮影**: 美しい世界の記録
-- **ストーリーテリング**: 物語に映画的演出
-
-## 👨‍💻 開発者について
-
-[mmingプログラミング教室](https://mming-lab.github.io/)が開発 - すべての人にプログラミングを身近で楽しいものにすることを目指しています！
+*For Japanese documentation, see [README_ja.md](README_ja.md)*
