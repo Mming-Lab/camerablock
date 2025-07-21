@@ -10,3 +10,6 @@ _site
 *.tgz
 .header.json
 .simstate.json
+
+# Claude Code
+.claude/
