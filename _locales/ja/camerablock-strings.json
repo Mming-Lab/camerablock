@@ -9,9 +9,16 @@
     "Camera.EaseRot|block": "スムーズ回転| カメラ:%pos=minecraftCreateWorldPosition| 上下:%xRot左右:%yRot| 動き方:%easeType| 時間:%easeTime秒| 終了:%isClear|| 停止:%isPause",
     "Camera.fadeTime|block": "画面エフェクト| だんだん暗く:%fadeInSeconds秒| 止まる:%holdSeconds秒| だんだん明るく:%fadeOutSeconds秒| 色:%colorCode=colorNumberPicker| カメラ終了:%isClear",
     "Camera.rgb|block": "色を作る| 赤%red| 緑%green| 青%blue",
+    "Camera.FirstPersonView|block": "一人称視点",
+    "Camera.ThirdPersonView|block": "三人称視点",
+    "Camera.FrontView|block": "前面視点",
+    "Camera.SetMovement|block": "プレイヤーの移動 %enabled=toggleEnabledDisabled",
+    "Camera.SetCameraControl|block": "カメラ操作 %enabled=toggleEnabledDisabled",
     "Camera|block": "カメラ",
     "{id:group}Camera Angles": "カメラアングル",
     "{id:group}Camera Work": "カメラワーク",
+    "{id:group}Camera Presets": "カメラプリセット",
+    "{id:group}Input Control": "入力制御",
     "{id:group}Fade": "画面エフェクト",
     "{id:category}Camera": "カメラ"
 }

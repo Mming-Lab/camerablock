@@ -333,4 +333,46 @@ namespace Camera {
         }
     }
 
+    //% group="Camera Presets"
+    //% block="First-person view"
+    //% weight=950
+    export function FirstPersonView(): void {
+        const cmd: string = `${COMMND_BASE} set minecraft:first_person`;
+        player.execute(cmd);
+    }
+
+    //% group="Camera Presets"
+    //% block="Third-person view"
+    //% weight=940
+    export function ThirdPersonView(): void {
+        const cmd: string = `${COMMND_BASE} set minecraft:third_person`;
+        player.execute(cmd);
+    }
+
+    //% group="Camera Presets"
+    //% block="Front view"
+    //% weight=930
+    export function FrontView(): void {
+        const cmd: string = `${COMMND_BASE} set minecraft:third_person_front`;
+        player.execute(cmd);
+    }
+
+    //% group="Input Control"
+    //% block="Player movement %enabled=toggleEnabledDisabled"
+    //% weight=920
+    export function SetMovement(enabled: boolean): void {
+        const state = enabled ? "enabled" : "disabled";
+        const cmd: string = `inputpermission set @s movement ${state}`;
+        player.execute(cmd);
+    }
+
+    //% group="Input Control"
+    //% block="Camera control %enabled=toggleEnabledDisabled"
+    //% weight=910
+    export function SetCameraControl(enabled: boolean): void {
+        const state = enabled ? "enabled" : "disabled";
+        const cmd: string = `inputpermission set @s camera ${state}`;
+        player.execute(cmd);
+    }
+
 }
