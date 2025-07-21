@@ -104,7 +104,7 @@ namespace Camera {
     const COMMND_BASE: string = `camera @s `;
     const FREE: string = `${COMMND_BASE} set minecraft:free`;
 
-    //% block="Camera Clear after %time second"
+    //% block="End camera after %time seconds"
     //% time.defl=0
     //% weight=1000
     export function CameraClear(time: number): void {
@@ -114,7 +114,7 @@ namespace Camera {
 
 
 
-    //% block="Camera position:%pos=minecraftCreateWorldPosition"
+    //% block="Move camera to:%pos=minecraftCreateWorldPosition"
     //% weight=990
     export function Pos(pos: Position): void {
         const posCmd: string = `pos ${pos} `;//移動先座標
@@ -124,7 +124,7 @@ namespace Camera {
     }
 
     //% group="Camera Angles"
-    //% block="Camera position:%pos=minecraftCreateWorldPosition| subject:%facing"
+    //% block="Move camera to:%pos=minecraftCreateWorldPosition| look at:%facing"
     //% weight=980
     export function FacingEntity(pos: Position, facing: TargetSelectorKind): void {
         Pos(pos);//カメラ位置
@@ -136,7 +136,7 @@ namespace Camera {
     }
 
     //% group="Camera Angles"
-    //% block="Camera position:%pos=minecraftCreateWorldPosition| position of subject:%facing=minecraftCreateWorldPosition"
+    //% block="Move camera to:%pos=minecraftCreateWorldPosition| look at position:%facing=minecraftCreateWorldPosition"
     //% weight=970
     export function FacingPosition(pos: Position, facing: Position): void {
         Pos(pos);//カメラ位置
@@ -148,7 +148,7 @@ namespace Camera {
     }
 
     //% group="Camera Angles"
-    //% block="Camera position:%pos=minecraftCreateWorldPosition| rotation| pitch:%xRot yaw:%yRot"
+    //% block="Move camera to:%pos=minecraftCreateWorldPosition| angle| up/down:%xRot left/right:%yRot"
     //% xRot.min=-90 xRot.max=90
     //% yRot.min=-180 yRot.max=180
     //% weight=960
@@ -165,7 +165,7 @@ namespace Camera {
 
     //% group="Camera Work"
     //% blockId=minecraftCameraEasePosition
-    //% block="position work| Camera position:%pos=minecraftCreateWorldPosition| position of subject:%facing=minecraftCreateWorldPosition| Easing of Type:%easeType| Easing of sec:%easeTime| Camera Clear:%isClear|| Pause during work:%isPause"
+    //% block="Smooth move| Camera:%pos=minecraftCreateWorldPosition| look at position:%facing=minecraftCreateWorldPosition| movement style:%easeType| time:%easeTime seconds| end:%isClear|| pause:%isPause"
     //% easeTime.defl=3
     //% easeType.fieldEditor="gridpicker"
     //% easeType.fieldOptions.width=90
@@ -193,7 +193,7 @@ namespace Camera {
     }
 
     //% group="Camera Work"
-    //% block="subject work| Camera position:%pos=minecraftCreateWorldPosition| subject:%facing| Easing of Type:%easeType| Easing of sec:%easeTime| Camera Clear:%isClear|| Pause during work:%isPause"
+    //% block="Smooth track| Camera:%pos=minecraftCreateWorldPosition| look at:%facing| movement style:%easeType| time:%easeTime seconds| end:%isClear|| pause:%isPause"
     //% easeTime.defl=3
     //% easeType.fieldEditor="gridpicker"
     //% easeType.fieldOptions.width=90
@@ -221,7 +221,7 @@ namespace Camera {
     }
 
     //% group="Camera Work"
-    //% block="rotation work| Camera position:%pos=minecraftCreateWorldPosition| pitch:%xRot yaw:%yRot| Easing of Type:%easeType| Easing of sec:%easeTime| Camera Clear:%isClear|| Pause during work:%isPause"
+    //% block="Smooth rotate| Camera:%pos=minecraftCreateWorldPosition| up/down:%xRot left/right:%yRot| movement style:%easeType| time:%easeTime seconds| end:%isClear|| pause:%isPause"
     //% xRot.min=-90 xRot.max=90
     //% yRot.min=-180 yRot.max=180
     //% easeTime.defl=3
@@ -251,7 +251,7 @@ namespace Camera {
     }
 
     //% group="Fade"
-    //% block="Fade| In(sec):%fadeInSeconds| Hold(sec):%holdSeconds| Out(sec):%fadeOutSeconds| color:%colorCode=colorNumberPicker| Camera Clear:%isClear"
+    //% block="Screen effect| fade to dark:%fadeInSeconds sec| hold:%holdSeconds sec| fade to light:%fadeOutSeconds sec| color:%colorCode=colorNumberPicker| end:%isClear"
     //% fadeInSeconds.defl=1
     //% holdSeconds.defl=1
     //% fadeOutSeconds.defl=0
@@ -276,7 +276,7 @@ namespace Camera {
     }
 
     //% group="Fade"
-    //% block="red%red| green%green|blue%blue"
+    //% block="make color| red%red| green%green| blue%blue"
     //% red.min=0 red.max=255 
     //% green.min=0 green.max=255
     //% blue.min=0 blue.max=255
