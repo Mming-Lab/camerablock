@@ -165,7 +165,7 @@ namespace Camera {
 
     //% group="Camera Work"
     //% blockId=minecraftCameraEasePosition
-    //% block="Smooth move| Camera:%pos=minecraftCreateWorldPosition| look at position:%facing=minecraftCreateWorldPosition| movement style:%easeType| time:%easeTime seconds| end:%isClear|| pause:%isPause"
+    //% block="Smooth move| Camera:%pos=minecraftCreateWorldPosition| look at position:%facing=minecraftCreateWorldPosition| movement style:%easeType| time(s):%easeTime| end:%isClear|| pause:%isPause"
     //% easeTime.defl=3
     //% easeType.fieldEditor="gridpicker"
     //% easeType.fieldOptions.width=90
@@ -193,7 +193,7 @@ namespace Camera {
     }
 
     //% group="Camera Work"
-    //% block="Smooth track| Camera:%pos=minecraftCreateWorldPosition| look at:%facing| movement style:%easeType| time:%easeTime seconds| end:%isClear|| pause:%isPause"
+    //% block="Smooth track| Camera:%pos=minecraftCreateWorldPosition| look at:%facing| movement style:%easeType| time(s):%easeTime| end:%isClear| pause:%isPause"
     //% easeTime.defl=3
     //% easeType.fieldEditor="gridpicker"
     //% easeType.fieldOptions.width=90
@@ -221,7 +221,7 @@ namespace Camera {
     }
 
     //% group="Camera Work"
-    //% block="Smooth rotate| Camera:%pos=minecraftCreateWorldPosition| up/down:%xRot left/right:%yRot| movement style:%easeType| time:%easeTime seconds| end:%isClear|| pause:%isPause"
+    //% block="Smooth rotate| Camera:%pos=minecraftCreateWorldPosition| up/down:%xRot left/right:%yRot| movement style:%easeType| time(s):%easeTime| end:%isClear| pause:%isPause"
     //% xRot.min=-90 xRot.max=90
     //% yRot.min=-180 yRot.max=180
     //% easeTime.defl=3
@@ -251,7 +251,7 @@ namespace Camera {
     }
 
     //% group="Fade"
-    //% block="Screen effect| fade to dark:%fadeInSeconds sec| hold:%holdSeconds sec| fade to light:%fadeOutSeconds sec| color:%colorCode=colorNumberPicker| end:%isClear"
+    //% block="Screen effect| fade to dark(s):%fadeInSeconds| hold(s):%holdSeconds| fade to light(s):%fadeOutSeconds| color:%colorCode=colorNumberPicker| end:%isClear"
     //% fadeInSeconds.defl=1
     //% holdSeconds.defl=1
     //% fadeOutSeconds.defl=0
@@ -291,6 +291,52 @@ namespace Camera {
     //% weight=770
     export function setcolors(color: number): number {
         return color;
+    }
+    
+
+    //% group="Camera Presets"
+    //% block="First-person view"
+    //% weight=760
+    export function FirstPersonView(): void {
+        const cmd: string = `${COMMND_BASE} set minecraft:first_person`;
+        player.execute(cmd);
+    }
+
+    //% group="Camera Presets"
+    //% block="Third-person view"
+    //% weight=750
+    export function ThirdPersonView(): void {
+        const cmd: string = `${COMMND_BASE} set minecraft:third_person`;
+        player.execute(cmd);
+    }
+
+    //% group="Camera Presets"
+    //% block="Front view"
+    //% weight=740
+    export function FrontView(): void {
+        const cmd: string = `${COMMND_BASE} set minecraft:third_person_front`;
+        player.execute(cmd);
+    }
+
+
+    //% group="Input Control"
+    //% block="Player movement %enabled"
+    //% enabled.shadow=toggleOnOff
+    //% weight=730
+    export function SetMovement(enabled: boolean): void {
+        const state = enabled ? "enabled" : "disabled";
+        const cmd: string = `inputpermission set @s movement ${state}`;
+        player.execute(cmd);
+    }
+
+    //% group="Input Control"
+    //% block="Camera control %enabled"
+    //% enabled.shadow=toggleOnOff
+    //% weight=720
+    export function SetCameraControl(enabled: boolean): void {
+        const state = enabled ? "enabled" : "disabled";
+        const cmd: string = `inputpermission set @s camera ${state}`;
+        player.execute(cmd);
     }
 
     export function _getEasingId(id: Easing) {
@@ -333,46 +379,5 @@ namespace Camera {
         }
     }
 
-    //% group="Camera Presets"
-    //% block="First-person view"
-    //% weight=950
-    export function FirstPersonView(): void {
-        const cmd: string = `${COMMND_BASE} set minecraft:first_person`;
-        player.execute(cmd);
-    }
-
-    //% group="Camera Presets"
-    //% block="Third-person view"
-    //% weight=940
-    export function ThirdPersonView(): void {
-        const cmd: string = `${COMMND_BASE} set minecraft:third_person`;
-        player.execute(cmd);
-    }
-
-    //% group="Camera Presets"
-    //% block="Front view"
-    //% weight=930
-    export function FrontView(): void {
-        const cmd: string = `${COMMND_BASE} set minecraft:third_person_front`;
-        player.execute(cmd);
-    }
-
-    //% group="Input Control"
-    //% block="Player movement %enabled=toggleEnabledDisabled"
-    //% weight=920
-    export function SetMovement(enabled: boolean): void {
-        const state = enabled ? "enabled" : "disabled";
-        const cmd: string = `inputpermission set @s movement ${state}`;
-        player.execute(cmd);
-    }
-
-    //% group="Input Control"
-    //% block="Camera control %enabled=toggleEnabledDisabled"
-    //% weight=910
-    export function SetCameraControl(enabled: boolean): void {
-        const state = enabled ? "enabled" : "disabled";
-        const cmd: string = `inputpermission set @s camera ${state}`;
-        player.execute(cmd);
-    }
-
+  
 }
