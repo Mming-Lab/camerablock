@@ -8,10 +8,11 @@
 
 Minecraft Education Edition用のMakeCode拡張機能です。複雑なカメラコマンドを簡単なビジュアルブロックに変換して、映画のような動画やプレゼンテーションを作成できます！
 
-<video width="640" height="360" controls>
-  <source src="./camera_mccup.mp4" type="video/mp4">
-  お使いのブラウザは動画タグをサポートしていません。
-</video>
+## 🎬 デモ
+
+[![デモ動画を視聴](https://img.shields.io/badge/▶️_デモ動画を視聴-blue?style=for-the-badge)](https://mming-lab.github.io/camerablock/)
+
+*上記をクリックしてカメラブロックの動作を確認！*
 
 ## ✨ 機能
 
