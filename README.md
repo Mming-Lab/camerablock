@@ -8,7 +8,10 @@
 
 A MakeCode extension for Minecraft Education Edition that turns complex camera commands into simple visual blocks. Perfect for creating cinematic videos and presentations!
 
-![Demo Video](./camera_mccup.mp4)
+<video width="640" height="360" controls>
+  <source src="./camera_mccup.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ## ✨ Features
 
