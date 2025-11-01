@@ -31,13 +31,27 @@ Minecraft Education Edition用のMakeCode拡張機能です。複雑なカメラ
 
 ## 📚 インストール方法
 
-1. [Minecraft Education Edition MakeCodeエディタ](https://minecraft.makecode.com/)を開く
-2. **拡張機能** → **URLをインポート**をクリック
-3. 入力: `https://github.com/Mming-Lab/makecode-minecraft-camera`
+### 1. 拡張機能ボタンを押下
 
-## 📄 ライセンス
+MakeCode for Minecraftのエディタ画面で、左下の**拡張機能**ボタンをクリックします。
 
-MITライセンス - [mmingプログラミング教室](https://mming-lab.github.io/)が開発
+![拡張機能ボタン](images/01_extensions_button.png)
+
+### 2. リポジトリURLを入力して検索
+
+検索欄に以下のURLを入力して検索します：
+
+```
+https://github.com/Mming-Lab/makecode-minecraft-camera
+```
+
+![URL検索](images/02_search_url.png)
+
+### 3. 拡張機能を取り込み
+
+検索結果に表示された拡張機能を選択してインポートします。
+
+![拡張機能選択](images/03_import_extension.png)
 
 ---
 
