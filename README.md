@@ -29,6 +29,11 @@ A MakeCode extension for Minecraft Education Edition that turns complex camera c
 - **Screen Effects**: Fade effects with custom colors
 - **Visual Programming**: No commands to memorize
 
+## 📄 License
+
+This project is licensed under the [PolyForm Noncommercial License 1.0.0](LICENSE).
+Non-commercial use only. See [LICENSE](LICENSE) for details.
+
 ---
 
 *For Japanese documentation, see [README_ja.md](README_ja.md)*

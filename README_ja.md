@@ -53,6 +53,11 @@ https://github.com/Mming-Lab/makecode-minecraft-camera
 
 ![拡張機能選択](images/03_import_extension.png)
 
+## 📄 ライセンス
+
+このプロジェクトは [PolyForm Noncommercial License 1.0.0](LICENSE) の下で公開されています。
+非商用目的でのみ利用可能です。詳細は [LICENSE](LICENSE) をご確認ください。
+
 ---
 
 *英語版のドキュメントは [README.md](README.md) をご覧ください*
